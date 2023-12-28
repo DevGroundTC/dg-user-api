@@ -19,10 +19,6 @@ pipeline {
 
         stage('Docker build') {
             steps {
-//                 script {
-//                 docker.build("dg-user-api:latest")
-//                 }
-//             }
                 sh 'docker build -t dg-user-api:latest .'
         }
 
