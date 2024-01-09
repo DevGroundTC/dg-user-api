@@ -5,7 +5,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn clean test'
+                sh 'mvn test'
                 //еще раз проходят тесты???
                 //sh 'mvn clean package'
             }
@@ -19,11 +19,8 @@ pipeline {
 
         stage('Docker build') {
             steps {
-//                 script {
-//                 docker.build("dg-user-api:latest")
-//                 }
-//             }
-                sh 'docker build -t dg-user-api:v1 .'
+                sh 'docker build -t dg-user-api:latest .'
+        }
         }
 
         stage('Deploy') {
@@ -34,4 +31,4 @@ pipeline {
             }
         }
     }
-}                            
+}
