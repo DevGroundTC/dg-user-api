@@ -38,6 +38,7 @@ pipeline {
                     }
                 }
             sh 'docker run -p 1000:1000 --name user-api dg-user-api:latest'
+                 echo "Контейнер запущен"
         }
     }
 }
