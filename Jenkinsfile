@@ -24,11 +24,19 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-            // как остановится, если сначала не запускали
-                sh 'docker stop dg-user-api:latest'
-                sh 'docker run -p 1000:1000 --name user-api dg-user-api:latest'
-            }
+            // steps {
+            // // как остановится, если сначала не запускали
+            //     sh 'docker stop dg-user-api:latest'
+            //     sh 'docker run -p 1000:1000 --name user-api dg-user-api:latest'
+            // }
+                      script {
+                    def previousContainerId = sh(returnStdout: true, script: "docker ps -q --filter ancestor=dg-user-api:latest").trim()
+                    if (previousContainerId) {
+                        sh "docker stop $previousContainerId"
+                    } else {
+                        echo "Предыдущий контейнер отсутствует"
+                    }
+                }
         }
     }
 }
