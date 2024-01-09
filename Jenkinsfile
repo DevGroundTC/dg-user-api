@@ -24,7 +24,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            // steps {
+             steps {
             // // как остановится, если сначала не запускали
             //     sh 'docker stop dg-user-api:latest'
             //     sh 'docker run -p 1000:1000 --name user-api dg-user-api:latest'
@@ -40,4 +40,5 @@ pipeline {
             sh 'docker run -p 1000:1000 --name user-api dg-user-api:latest'
         }
     }
+}
 }
