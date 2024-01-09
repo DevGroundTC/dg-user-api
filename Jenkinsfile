@@ -5,9 +5,9 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn clean test'
                 //еще раз проходят тесты???
-                sh 'mvn clean package'
+                //sh 'mvn clean package'
             }
         }
 
@@ -23,13 +23,13 @@ pipeline {
 //                 docker.build("dg-user-api:latest")
 //                 }
 //             }
-                sh 'docker build -t dg-user-api:latest .'
+                sh 'docker build -t dg-user-api:v1 .'
         }
 
         stage('Deploy') {
             steps {
             // как остановится, если сначала не запускали
-           //     sh 'docker stop dg-user-api:latest'
+                sh 'docker stop dg-user-api:latest'
                 sh 'docker run -p 1000:1000 --name user-api dg-user-api:latest'
             }
         }
