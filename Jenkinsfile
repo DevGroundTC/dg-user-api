@@ -19,7 +19,8 @@ pipeline {
 
         stage('Docker build') {
             steps {
-                sh 'docker build -t dg-user-api:latest .'
+               // sh 'docker build -t dg-user-api:latest .'
+                sh 'docker build -t dg-user-api:v1 .'
         }
         }
 
@@ -37,7 +38,8 @@ pipeline {
                         echo "Предыдущий контейнер отсутствует"
                     }
                 }
-            sh 'docker run -d -p 1000:1000 --name user-api dg-user-api:latest'
+            // sh 'docker run -d -p 1000:1000 --name user-api dg-user-api:latest'
+            sh 'docker run -d -p 1000:1000 --name dg-user-api:latest'
                  echo "Контейнер запущен"
         }
     }
