@@ -39,7 +39,7 @@ pipeline {
                     }
                 }
             // sh 'docker run -d -p 1000:1000 --name user-api dg-user-api:latest'
-            sh 'docker run -d -p 1000:1000 --name dg-user-api:latest'
+            sh 'docker run -d -p 1000:1000 dg-user-api:v1 --name dg-user-api:latest'
                  echo "Контейнер запущен"
         }
     }
