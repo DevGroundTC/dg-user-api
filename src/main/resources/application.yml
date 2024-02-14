@@ -1,2 +1,14 @@
 server:
-  port: 1000
+  port: 8888
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore/devgroundtc.p12
+    key-store-password: password
+    key-alias: devgroundtc
+    enabled: true
+    trust-store: classpath:keystore/cacerts
+    trust-store-password: changeit
+
+users:
+  api:
+    url: https://localhost:8889/api/v1/users
