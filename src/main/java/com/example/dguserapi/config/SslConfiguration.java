@@ -1,6 +1,7 @@
 package com.example.dguserapi.config;
 
 import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,10 +27,11 @@ public class SslConfiguration {
 
         SSLContext sslContext = SSLContextBuilder
                 .create()
-                .loadTrustMaterial(trustStore.getFile(), trustStorePassword.toCharArray())
+                .loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray())
                 .build();
 
         HttpClient httpClient = HttpClients.custom()
+                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
                 .setSSLContext(sslContext)
                 .build();
 
