@@ -5,7 +5,7 @@ server:
     key-store: classpath:keystore/devgroundtc.p12
     key-store-password: password
     key-alias: devgroundtc
-    enabled: true
+    enabled: false
     trust-store: classpath:keystore/cacerts
     trust-store-password: changeit
 
